@@ -1,5 +1,5 @@
 FROM node:8
 
-RUN wget 'https://bootstrap.pypa.io/get-pip.py' && \
-    python get-pip.py && \
-    pip install awscli --upgrade --user
+RUN apt-get update && apt-get install jq python py-pip py2-pip && \
+    pip install --upgrade pip awscli s3cmd && \
+    mkdir /root/.aws
