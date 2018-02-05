@@ -19,3 +19,6 @@ pipeline:
     when:
       branch: [dev]
 ```
+
+# Secrets
+* **docker_host** should be the docker url service url. Usually `tcp://docker:2375`
