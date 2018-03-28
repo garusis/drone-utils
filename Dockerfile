@@ -12,6 +12,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-183.0.0-linux-x86_64.tar.gz -o "gcloud.tar.gz" \
     && mkdir gcloud \
     && tar -xvzf gcloud.tar.gz -C ./gcloud \
+    && rm gcloud.tar.gz \
     && chmod +x ./gcloud/google-cloud-sdk/bin/bootstrapping/install.py  \
     &&  printf "\n" | python /home/gcloud/google-cloud-sdk/bin/bootstrapping/install.py  --usage-reporting=false --command-completion=true  --path-update=true
     
