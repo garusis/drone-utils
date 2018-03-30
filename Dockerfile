@@ -1,6 +1,6 @@
 FROM docker:stable
 RUN apk update \
-    && apk add curl jq bash git python py-pip py2-pip tar \
+    && apk add curl jq git python py-pip py2-pip tar \
     && pip install --upgrade pip \
     && pip install --upgrade awscli j2cli s3cmd  \
     && mkdir /root/.aws \
@@ -12,4 +12,9 @@ RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud
     && tar -xvzf gcloud.tar.gz  \
     && chmod +x ./google-cloud-sdk/install.sh  \
     && export CLOUDSDK_CORE_DISABLE_PROMPTS=1 \
-    && sh  ./google-cloud-sdk/install.sh --usage-reporting=false --command-completion=true  --path-update=true --rc-path=/root/.profile --additional-components=kubectl
+    && sh  ./google-cloud-sdk/install.sh \
+    --usage-reporting=false --command-completion=true \
+    --path-update=true \
+    #Optional, use it for instal kubectl--additional-components=kubectl \
+    --rc-path=/root/.bashrc 
+RUN cd /home/google-cloud-sdk/bin && ls -l | grep "\-rwxr\-xr\-x"  | awk '{print $9}' | xargs -I % ln -s /home/google-cloud-sdk/bin/% /usr/local/bin/
