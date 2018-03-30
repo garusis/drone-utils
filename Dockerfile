@@ -11,5 +11,5 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-183.0.0-linux-x86_64.tar.gz -o "gcloud.tar.gz" \
     && tar -xvzf gcloud.tar.gz  \
     && chmod +x ./google-cloud-sdk/install.sh  \
-    && export CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    && export CLOUDSDK_CORE_DISABLE_PROMPTS=1 \
     && sh  ./google-cloud-sdk/install.sh --usage-reporting=false --command-completion=true  --path-update=true --rc-path=/root/.profile --additional-components=kubectl
