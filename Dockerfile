@@ -1,6 +1,6 @@
 FROM docker:stable
 
-RUN apk update && apk add curl jq bash python py-pip py2-pip mysql-client && \
+RUN apk update && apk add curl jq bash nodejs python py-pip py2-pip mysql-client && \
     pip install --upgrade pip && pip install --upgrade awscli j2cli s3cmd && \
     mkdir /root/.aws
 
